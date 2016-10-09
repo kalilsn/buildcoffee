@@ -76,7 +76,7 @@ a, a:visited {
 
 .page {
   min-height: 100vh;
-  padding: 6em 8em;
+  padding: 108px 144px;
 }
 .page:nth-child(2n) {
   background: #fafafa;
@@ -184,6 +184,10 @@ img {
   font-size: 1em;
 }
 
+.social {
+  display: none;
+}
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -205,7 +209,7 @@ img {
   font-weight: 600;
 }
 .nav a:hover {
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 .nav a.selected {
   color: #000;
@@ -219,9 +223,9 @@ img {
   width: 100%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -232,15 +236,44 @@ img {
   display: none;
 }
 .header-wrapper.after-scroll .logo {
-  position: absolute;
-  height: 1em;
-  left: 3.5em;
-  margin-right: auto;
+  height: 32px;
+  margin-left: 56px;
   cursor: pointer;
 }
 .header-wrapper.after-scroll .nav {
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+.header-wrapper.after-scroll .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 1em;
+  height: 40px;
+}
+.header-wrapper.after-scroll .social div a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1 1 0%;
+  margin: 0 .5em;
+  height: 40px;
+}
+.header-wrapper.after-scroll .social div:hover {
+  background: #eee;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.header-wrapper.after-scroll .social svg {
+  height: 1.2em;
 }
 .header-wrapper.after-scroll #shadow {
   display: none;
@@ -250,7 +283,7 @@ img {
 }
 
 .hours {
-  padding: 0 8em;
+  padding: 0 144px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -300,24 +333,6 @@ img {
   font-size: 1.3em;
   text-transform: uppercase;
   margin-bottom: 2em;
-}
-
-footer {
-  background: #E5E5E5;
-  font-size: .8em;
-  height: 5em;
-}
-footer ul {
-  list-style-type: none;
-  display: inline-block;
-}
-footer .credit {
-  display: inline-block;
-  margin: 1em auto 1em 1em;
-}
-footer .newsletter {
-  display: inline-block;
-  margin: 1em;
 }
 
 .hover .st1 {

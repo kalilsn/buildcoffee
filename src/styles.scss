@@ -1,13 +1,15 @@
 @import 'https://fonts.googleapis.com/css?family=Libre+Franklin:500,500i,600,700';
 
-$h-padding: 8em;
-$v-padding: 6em;
+$font-size: 18px;
+$h-padding: 8 * $font-size;
+$v-padding: 6 * $font-size;
 $nav-width: 700px;
 $nav-height: 40px;
 $nav-font-weight: 600;
 $nav-selected-font-weight: 600;
-$nav-logo-height: 1em;
+$nav-logo-height: $nav-height - 8;
 $nav-background: #fff;
+$nav-hover-background: #eee;
 $page-background-even: #fafafa;
 
 
@@ -63,7 +65,7 @@ $page-background-even: #fafafa;
 
 html {
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: $font-size;
     line-height: 1.5;
     font-family: 'Libre Franklin', sans-serif;
 }
@@ -182,7 +184,9 @@ img {
     font-size: 1em;
 }
 
-
+.social {
+    display: none;
+}
 
 .nav {
     display: flex;
@@ -199,7 +203,7 @@ img {
         font-weight: $nav-font-weight;
 
         &:hover {
-            background-color: #eeeeee
+            background-color: $nav-hover-background;
         }
         
         &.selected {
@@ -216,7 +220,7 @@ img {
     position: fixed;
     width: 100%;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: $nav-background;
     box-shadow: 0px 1px 2px 0px #cacaca;
@@ -226,16 +230,39 @@ img {
     }
     
     .logo {
-        position: absolute;
+        // position: absolute;
         height: $nav-logo-height;
-        left: $h-padding/2 - $nav-logo-height/2;
-        margin-right: auto;
+        margin-left: $h-padding/2 - $nav-logo-height/2;
+        // margin-right: auto;
         cursor: pointer;
     }
     .nav {
         justify-content: space-around;
+    }
+
+    .social {
+        display: flex;
+        margin-right: 1em;
+        height: $nav-height;
         
-        a {
+        div {
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1; 
+                margin: 0 .5em;
+                height: $nav-height;
+            }
+         
+            &:hover {
+                background: $nav-hover-background; 
+                transition: 0.3s;
+            }
+        }
+
+        svg {
+            height: 1.2em;
         }
     }
 
@@ -309,21 +336,7 @@ img {
 }
 
 footer {
-    background: #E5E5E5;
-    font-size: .8em;
-    height: 5em;
-    ul {
-        list-style-type: none;
-        display: inline-block;
-    }
-    .credit {
-        display: inline-block;
-        margin: 1em auto 1em 1em;
-    }
-    .newsletter {
-        display: inline-block;
-        margin: 1em;
-    }
+
 }
 
 .hover {
