@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
             scss: {
                 files: 'src/styles.scss',
-                tasks: ['sass:dev', 'postcss']
+                tasks: ['sass:dev', 'postcss:dev']
             },
 
             css: {
@@ -41,9 +41,6 @@ module.exports = function(grunt) {
                 files: {
                     'src/styles.css': 'src/styles.scss'
                 },
-                options: {
-                    'style': 'expanded'
-                }
             },
 
             build: {
