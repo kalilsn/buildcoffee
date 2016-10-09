@@ -94,7 +94,8 @@ module.exports = function(grunt) {
         copy: {
             build: {
                 files: [
-                    {src: 'assets/img/**', dest: 'dist/'}
+                    {src: 'assets/img/**', dest: 'dist/'},
+                    {src: '*.php', dest: 'dist/'}
                 ]
             }
         },
