@@ -14,16 +14,12 @@
         }
 
 
-        $to = "kalilsn@gmail.com";
+        $to = "info@buildcoffee.org";
         $subject = $subject ? $subject : "Hello Build!";
-
-        $email_content = "Name: $name\n";
-        $email_content .= "Email: $email\n\n";
-        $email_content .= "Message:\n$message\n";
 
         $email_headers = "From: $name <$email>";
 
-        if (mail($to, $subject, $email_content, $email_headers)) {
+        if (mail($to, $subject, $message, $email_headers)) {
             http_response_code(200);
             echo "Thank you! We'll do our best to get back to you ASAP.";
         } else {

@@ -76,6 +76,7 @@ $(function() {
         e.preventDefault();
 
         var data = contactForm.serialize();
+        console.log("data: ", data);
         $(contactForm).hide();
         $(responseDiv).addClass('waiting');
         $.ajax({
@@ -83,12 +84,12 @@ $(function() {
             url: $(contactForm).attr('action'),
             data: data
         }).done(function(data) {
+            console.log("success\n", data);
             $(responseDiv).removeClass('error waiting');
             $(responseDiv).addClass('success');
-            var response = data.responseText;
-
-            $(responseDiv).text(response);
+            $(responseDiv).text(data);
         }).fail(function(data){
+            console.log("fail\n", data);
             $(responseDiv).removeClass('success waiting');
             $(responseDiv).addClass('error');
             $(contactForm).show();
@@ -97,7 +98,7 @@ $(function() {
             if (response.responseText !== '') {
                 $(responseDiv).text(response);
             } else {
-                $('#responseDiv > p.error').show();
+                $('#responseDiv > p.unknown-error').show();
             }
         });
 
