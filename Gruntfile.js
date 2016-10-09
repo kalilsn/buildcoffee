@@ -89,7 +89,7 @@ module.exports = function(grunt) {
             }
         },
 
-        clean: 'dist/**/*',
+        clean: ['dist/**/*'],
 
         copy: {
             build: {
