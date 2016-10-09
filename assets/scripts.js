@@ -108,6 +108,10 @@ $(function() {
 
 });
 
+function recaptchaCallback() {
+    $('.g-recaptcha').hide();
+    $('.contact-form-wrapper button').show();
+}
 
 
 //Taken from underscore via https://davidwalsh.name/javascript-debounce-function
