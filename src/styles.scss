@@ -1,0 +1,365 @@
+@import 'https://fonts.googleapis.com/css?family=Libre+Franklin:500,500i,600,700';
+
+$h-padding: 8em;
+$v-padding: 6em;
+$nav-width: 700px;
+$nav-height: 40px;
+$nav-font-weight: 600;
+$nav-selected-font-weight: 600;
+$nav-logo-height: 1em;
+$nav-background: #fff;
+$page-background-even: #fafafa;
+
+
+@media (max-width:300px) {
+    .medium, .large {
+        display: none;
+    }
+}
+
+@media (min-width:301px) and (max-width:500px) {
+    .medium, .large {
+        display: none;
+    }
+}
+
+@media (min-width:800px) and (max-width:1099px) {
+    .large {
+        display: none;
+    }
+
+    .two-column.img-grid > div {
+        height: 200px;
+    }
+
+    .three-column.img-grid > div {
+        height: 210px;
+    }
+}
+
+
+@media (min-width:1100px) and (max-width:1249px) {
+    .large {
+        display: none;
+    }
+
+    .two-column.img-grid > div {
+        height: 250px;
+    }
+
+    .three-column.img-grid > div {
+        height: 260px;
+    }
+
+
+}
+
+@media (min-width:1250px) {
+    .img-grid > div {
+        height: 300px;
+    }
+}
+
+
+html {
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+p {
+    margin-top: 0;
+    text-align: justify;
+}
+
+body, ul {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+a {
+    text-decoration: underline;
+    font-weight: 600;
+    transition: 0.5s;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+a, a:visited {
+    color: black;
+}
+
+.page {
+    min-height: 100vh;
+    padding: $v-padding $h-padding;
+
+    &:nth-child(2n) {
+        background: $page-background-even;    
+    }
+}
+
+img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.img-grid {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    & > div {
+        flex-grow: 1;
+    }
+}
+
+.two-column.img-grid > div {
+    width: 49%;
+
+    &:last-child img {
+        float: right;
+    }
+
+} 
+
+.three-column.img-grid > div {
+    width: 32%;
+
+    &:last-child img {
+        float: right;
+    }
+
+    &:nth-child(2) {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.landing {
+    background: white;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-flow: row wrap;
+    width: 700px;
+}
+.address-wrapper {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.logo {
+    height: 200px;
+}
+
+.nameplate {
+    height: 25%;
+    margin-bottom: .5em;
+}
+
+.address {
+    text-align: center;
+    margin-top: .5em;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    height: $nav-height;
+    line-height: $nav-height;
+    width: $nav-width;
+    a {
+        flex-grow: 1;
+        text-decoration: none;
+        color: #6f6e6e;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: $nav-font-weight;
+
+        &:hover {
+            background-color: #eeeeee
+        }
+        
+        &.selected {
+            color: #000;
+            // font-weight: $nav-selected-font-weight;
+        }
+    }
+}
+
+.header-wrapper.after-scroll {
+    left: 0;
+    height: $nav-height;
+    line-height: $nav-height;
+    position: fixed;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background: $nav-background;
+    box-shadow: 0px 1px 2px 0px #cacaca;
+
+    .address-wrapper {
+        display: none;
+    }
+    
+    .logo {
+        position: absolute;
+        height: $nav-logo-height;
+        left: $h-padding/2 - $nav-logo-height/2;
+        margin-right: auto;
+        cursor: pointer;
+    }
+    .nav {
+        justify-content: space-around;
+        
+        a {
+        }
+    }
+
+    #shadow {
+        display: none;
+    }
+
+    .st1,.st2 {
+        fill: #000;
+    }
+}
+
+
+.hours {
+    padding: 0 $h-padding;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7em;
+    
+    .day {
+        margin-right: 1em;
+    }
+
+    .day li {
+        font-weight: 700;
+        text-align: right;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+}
+
+.location {
+
+    .address {
+        margin: 1em 0;
+        text-align: left;
+        display: block;
+        font-weight: 600;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 500px;
+    }
+}
+
+.events {
+    img {
+        float: left;
+        height: 250px;
+        margin: 0 1em 1em 0;
+    }
+
+    .event-title a {
+        font-weight: 700;
+    }
+
+    .event-time {
+        font-style: italic;
+    }
+
+    .upcoming {
+        font-weight: 700;
+        font-size: 1.3em;
+        text-transform: uppercase;
+        margin-bottom: 2em;
+    }
+}
+
+footer {
+    background: #E5E5E5;
+    font-size: .8em;
+    height: 5em;
+    ul {
+        list-style-type: none;
+        display: inline-block;
+    }
+    .credit {
+        display: inline-block;
+        margin: 1em auto 1em 1em;
+    }
+    .newsletter {
+        display: inline-block;
+        margin: 1em;
+    }
+}
+
+.hover {
+    .st1 {
+        animation: multicolor-dark 6s infinite;
+    }
+
+    .st2 {
+        animation: multicolor-light 6s infinite;
+    }
+
+    #shadow {
+        opacity: 0;
+        transition: 0.3s;
+    }
+}
+
+#shadow,.st1,.st2 {
+    transition: 0.3s;
+}
+
+@keyframes multicolor-light {
+    0% {fill: rgb(238,160,165)}
+    13% {fill: rgb(237,176,13)}
+    25% {fill: rgb(226,237,13)}
+    38% {fill: rgb(133,237,13)}
+    50% {fill: rgb(13,237,195)}
+    63% {fill: rgb(99,170,255)}
+    75% {fill: rgb(203,160,238)}
+}
+@keyframes multicolor-dark {
+    0% {fill: rgb(178,52,94)}
+    13% {fill: rgb(178,132,10)}
+    25% {fill: rgb(170,178,10)}
+    38% {fill: rgb(100,178,10)}
+    50% {fill: rgb(10,178,147)}
+    63% {fill: rgb(75,128,192)}
+    75% {fill: rgb(153,120,179)}
+}
