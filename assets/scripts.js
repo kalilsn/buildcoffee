@@ -1,6 +1,7 @@
 $(function() {
     var pageHeights = [];
     var pageNames = [];
+    var scrollSpeed = 700;
     var fixedOn = $(".nav").offset().top;
     console.log(fixedOn);
     getPageHeights();
@@ -56,7 +57,7 @@ $(function() {
     $(".nav a").click(function() {
         $('html, body').animate({
             scrollTop: $($(this).attr("href")).offset().top
-        }, 500, highlightMenuItem);
+        }, scrollSpeed, highlightMenuItem);
         return false;
     });
 
@@ -64,8 +65,43 @@ $(function() {
         if ($(".selected").length) {
             $('html, body').animate({
                 scrollTop: 0
-            }, 500);
+            }, scrollSpeed);
         }
+    });
+
+    
+    var responseDiv = $('#contact-form-response');
+    var contactForm = $('#contact-form');
+    $(contactForm).submit(function(e) {
+        e.preventDefault();
+
+        var data = contactForm.serialize();
+        $(contactForm).hide();
+        $(responseDiv).addClass('waiting');
+        $.ajax({
+            type: 'POST',
+            url: $(contactForm).attr('action'),
+            data: data
+        }).done(function(data) {
+            $(responseDiv).removeClass('error waiting');
+            $(responseDiv).addClass('success');
+            var response = data.responseText;
+
+            $(responseDiv).text(response);
+        }).fail(function(data){
+            $(responseDiv).removeClass('success waiting');
+            $(responseDiv).addClass('error');
+            $(contactForm).show();
+
+            var response = data.responseText;
+            if (response.responseText !== '') {
+                $(responseDiv).text(response);
+            } else {
+                $('#responseDiv > p.error').show();
+            }
+        });
+
+
 
     });
 

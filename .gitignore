@@ -6,3 +6,4 @@ dist/
 .sass-cache/
 .DS_Store
 src/styles.css
+assets/styles.css

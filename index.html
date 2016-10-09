@@ -280,15 +280,16 @@
     </div>
     <div class="contact page" id="contact">
         <p>To get in touch, email <a href="mailto:info@buildcoffee.org">info@buildcoffee.org</a> or fill out the contact form below.</p>
-        <div class="contact-form">
-            <form action="contact.php" method="post">
-                <div><label for="name">Name:</label><input type="text" id="name" name="name"></div>
-                <div><label for="email">Email address:</label><input type="text" id="email" name="email"></div>
-                <div><label for="subject">Subject:</label><input type="text" id="subject" name="subject"></div>
-                <div><label for="message">Message:</label><textarea name="message" id="msg"></textarea></div>
-                <button type="submit">Send</button>
-            </form>
+        <div id="contact-form-response">
+            <p class="unknown-error">We tried to send your message, but something went wrong! Please try again or email us directly at <a href="mailto:info@buildcoffee.org">info@buildcoffee.org</a>.</p>
         </div>
+        <form id="contact-form" action="contact.php" method="post">
+            <div><label for="name">Name:</label><input type="text" id="name" name="name" required></div>
+            <div><label for="email">Email address:</label><input type="text" id="email" name="email" required></div>
+            <div><label for="subject">Subject:</label><input type="text" id="subject" name="subject"></div>
+            <div><label for="message">Message:</label><textarea name="message" id="msg" required></textarea></div>
+            <button type="submit">Send</button>
+        </form>
         <p>Sign up for Build’s newsletter here:</p>
         <div class="newsletter">
             <form class="tinyletter" action="https://tinyletter.com/buildcoffee" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/buildcoffee', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
