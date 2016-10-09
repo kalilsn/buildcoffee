@@ -118,9 +118,18 @@ module.exports = function(grunt) {
                     'dist/assets/scripts.min.js': 'assets/*.js'
                 }
             }
+        },
+
+        run: {
+            deploy: {
+                cmd: "./deploy.sh"
+            }
         }
     });
 
     grunt.registerTask('default', 'watch');
     grunt.registerTask('build', ['clean', 'copy', 'processhtml', 'uglify', 'sass:build', 'postcss:build', 'cacheBust']);
+
+    // Deploy task depends on deploy.sh which contains necessary commands for deployment (eg. scp)
+    grunt.registerTask('deploy', ['build','run:deploy']);
 };

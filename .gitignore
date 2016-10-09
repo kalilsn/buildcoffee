@@ -3,5 +3,6 @@ deploy.sh
 *.pyc
 *.map
 dist/
-.sass_cache/
+.sass-cache/
 .DS_Store
+src/styles.css
