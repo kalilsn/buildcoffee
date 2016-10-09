@@ -14,7 +14,6 @@ $(function() {
     $(window).resize(debounce(onResize, 100));
 
     function onResize() {
-        fixedOn = $(".nav").offset().top;
         console.log(fixedOn);
         getPageHeights();
     }
@@ -25,7 +24,8 @@ $(function() {
             throttle(highlightMenuItem(), 250);
         }
 
-        if ($(window).scrollTop() <= fixedOn) {
+        else if ($(window).scrollTop() <= fixedOn) {
+            console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
             $("#header-wrapper").removeClass("after-scroll");
             $("#nav > a.selected").removeClass("selected");
         }
