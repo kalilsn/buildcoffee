@@ -92,6 +92,7 @@ module.exports = function(grunt) {
             build: {
                 files: [
                     {src: 'assets/img/**', dest: 'dist/'},
+                    {src: 'assets/icons/**', dest: 'dist/'},
                     {src: '*.php', dest: 'dist/'}
                 ]
             }
