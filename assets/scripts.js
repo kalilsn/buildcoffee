@@ -72,27 +72,28 @@ $(function() {
     
     var responseDiv = $('#contact-form-response');
     var contactForm = $('#contact-form');
+    var wrapper = $(contactForm).parent();
     $(contactForm).submit(function(e) {
         e.preventDefault();
 
         var data = contactForm.serialize();
         console.log("data: ", data);
-        $(contactForm).hide();
-        $(responseDiv).addClass('waiting');
+        $(wrapper).addClass('waiting');
         $.ajax({
             type: 'POST',
             url: $(contactForm).attr('action'),
             data: data
         }).done(function(data) {
             console.log("success\n", data);
-            $(responseDiv).removeClass('error waiting');
+            $(responseDiv).removeClass('error');
             $(responseDiv).addClass('success');
+            $(wrapper).removeClass('waiting');
+            $(contactForm).hide();
             $(responseDiv).text(data);
         }).fail(function(data){
             console.log("fail\n", data);
-            $(responseDiv).removeClass('success waiting');
+            $(wrapper).removeClass('waiting');
             $(responseDiv).addClass('error');
-            $(contactForm).show();
 
             var response = data.responseText;
             if (response.responseText !== '') {
