@@ -195,6 +195,7 @@ img {
     height: $nav-height;
     line-height: $nav-height;
     width: $nav-width;
+
     a {
         flex-grow: 1;
         text-decoration: none;
@@ -238,6 +239,12 @@ img {
         cursor: pointer;
     }
     .nav {
+        //horrible flexbox hack from http://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties/33856609#33856609
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,0);
+        
+        top: 0;
         justify-content: space-around;
     }
 
@@ -245,6 +252,7 @@ img {
         display: flex;
         margin-right: 1em;
         height: $nav-height;
+        margin-left: auto;
         
         div {
             a {
