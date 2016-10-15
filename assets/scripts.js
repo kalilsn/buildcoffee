@@ -12,22 +12,44 @@ $(function() {
     });
 
     $(window).resize(debounce(onResize, 100));
+    bindNavOpen();
 
     function onResize() {
-        console.log(fixedOn);
         getPageHeights();
+        bindNavOpen();
+    }
+
+    function bindNavOpen() {
+        if ($(window).width() < 800) {
+            $(".nav a").click(function() {
+                if ($(this).parent().hasClass("selected")) {
+                    $("#nav").addClass("open");
+                    return false;
+                }
+                else {
+                    $("#nav").removeClass("open");
+                }
+            });
+        }
+
+
     }
 
     $(window).scroll(function() {
         if ($(window).scrollTop() > fixedOn) {
             $("#header-wrapper").addClass("after-scroll");
             throttle(highlightMenuItem(), 250);
+            if (!$(".selected").length) {
+                $(".nav li:first-child").addClass("selected");
+            }
         }
 
         else if ($(window).scrollTop() <= fixedOn) {
             console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
             $("#header-wrapper").removeClass("after-scroll");
-            $("#nav > a.selected").removeClass("selected");
+            $(".nav li.selected").removeClass("selected");
+            fixedOn = $(".nav").offset().top;
+
         }
     });
 
@@ -39,16 +61,16 @@ $(function() {
             pageNames[i] = this.id;
         });
         pageHeights.push($(document).height());
+        console.log("page heights: ", pageHeights);
     }
 
     function highlightMenuItem() {
-        var location = $(window).scrollTop() + 1;
+        var location = $(window).scrollTop();
         console.log(location); 
-        // +1 harmless hack to fix strange occasional bug where location == height but the previous item stays highlighted
         for (var i=0; i<pageHeights.length; i++) {
             if (location >= pageHeights[i] && location < pageHeights[i+1]) {
                 $(".selected").removeClass("selected");
-                $(".nav a:nth-child(" + i + ")").addClass("selected");
+                $(".nav li:nth-child(" + i + ")").addClass("selected");
                 break;
             }
         }
